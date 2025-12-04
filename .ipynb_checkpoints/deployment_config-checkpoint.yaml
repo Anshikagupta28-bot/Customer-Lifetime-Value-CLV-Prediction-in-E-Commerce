@@ -1,0 +1,29 @@
+# deployment_config.yaml
+# Configuration for production deployment
+
+model_config:
+  prediction_months: 12
+  discount_rate: 0.01
+  penalizer_coef: 0.01
+  n_estimators: 100
+
+data_config:
+  input_path: "data/"
+  model_path: "production_models/"
+  dashboard_refresh_interval: 3600  # seconds
+
+monitoring_config:
+  drift_threshold: 0.3
+  performance_threshold: 0.7
+  alert_email: "data-science-team@company.com"
+
+api_config:
+  host: "0.0.0.0"
+  port: 5000
+  workers: 4
+  timeout: 30
+
+retraining_config:
+  schedule: "0 2 1 * *"  # Monthly at 2 AM on 1st day
+  backup_models: true
+  validation_required: true
